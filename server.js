@@ -51,7 +51,7 @@ app.get("/forest", (request, response)=> {
      return response.send("please enter numberOfDragons");
     }
 
-if (daylight == "true"){
+if (daylight == "false"){
     response.send("You are in a deep, decently lit wood" + "with" + numberOfDragons + "dragons");
 } else {
     response.send("You are in a deep, dark wood..." + "with" + (+ numberOfDragons > 500 ?" a lot of ": numberOfDragons) + "dragons");
