@@ -1,0 +1,27 @@
+{
+  "name": "express.server",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Express Intro Project",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nvargas210680/express.server.js.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nvargas210680/express.server.js/issues"
+  },
+  "homepage": "https://github.com/nvargas210680/express.server.js#readme",
+  "keywords": [],
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.21"
+  }
+}
