@@ -1,63 +1,20 @@
 import express from "express";
-
+import dotenv from "dotenv";
+import mongoose  from "mongoose";
+import { questionRouter } from "./questionsRouter.js";
 
 const app = express();
+dotenv.config()
 const PORT = 4000;
-
-app.get("/", (request, response) => {
-    response.send("hello world!!");
-});
-
-app.get("/Express", (request, response) => {
-    response.send("Express Js Rulez")
-});
+app.use(express.json());
 
 
-app.get("/json", (request, response)=> {
-    response.json({hello: "world"});
-});
+await mongoose.connect(process.env.MONGO_URL)
+console.log("connected to mongodb;")
+
+app.use("/questions", questionRouter)
 
 
-app.get("/dateTime", (request, response) => {
-    response.send({
-        currentDate: new Date (). toLocaleDateString("en-us", {
-           month: "long",
-           day: "2-digit",
-           year: "numeric",
-           weekday: "long",
-           hour: "numeric",
-           minute: "2-digit", 
-        })
-    })
-});
-
-// app.get("/forest", (request, response) => {
-//     let daylight = request.query.daylight;
-
-//     if (daylight === "true") {
-//         response.send("You are in a deep, decently lit wood....");
-
-//     } else {
-//         response.send("You are in a deep, dark wood...");
-//     }
-// });
-
-
-app.get("/forest", (request, response)=> {
-    let daylight = request.query.daylight;
-    let numberOfDragons = request.query.numberOfDragons;
-
-    if(numberOfDragons === undefined){
-     return response.send("please enter numberOfDragons");
-    }
-
-if (daylight == "false"){
-    response.send("You are in a deep, decently lit wood" + "with" + numberOfDragons + "dragons");
-} else {
-    response.send("You are in a deep, dark wood..." + "with" + (+ numberOfDragons > 500 ?" a lot of ": numberOfDragons) + "dragons");
-}
-
-});
 
 
 app.listen(PORT, () =>{
